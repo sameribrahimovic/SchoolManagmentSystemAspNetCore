@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SchoolMS.Data;
+using SchoolMS.Data.Services;
 
 namespace SchoolMS
 {
@@ -23,7 +24,8 @@ namespace SchoolMS
             //DbContext configuration
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
 
-
+            //Services configuration
+            services.AddScoped<ICoursesService, CoursesService>();
 
             services.AddControllersWithViews();
         }

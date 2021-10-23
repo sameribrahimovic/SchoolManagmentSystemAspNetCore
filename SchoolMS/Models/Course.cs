@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SchoolMS.Data.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace SchoolMS.Models
 {
-    public class Course
+    public class Course : IEntityBase
     {
         [Key]
         public int Id { get; set; }

@@ -26,6 +26,7 @@ namespace SchoolMS
 
             //Services configuration
             services.AddScoped<ICoursesService, CoursesService>();
+            services.AddScoped<IStudentsService, StudentsService>();
 
             services.AddControllersWithViews();
         }

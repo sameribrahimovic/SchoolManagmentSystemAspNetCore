@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace SchoolMS.Controllers
 {
-    public class CoursesController : Controller
+    public class StudentsController : Controller
     {
-        private readonly ICoursesService _service;
-        public CoursesController(ICoursesService service)
+        private readonly IStudentsService _service;
+        public StudentsController(IStudentsService service)
         {
             _service = service;
         }
@@ -18,38 +18,38 @@ namespace SchoolMS.Controllers
             var data = await _service.GetAllAsync();
             return View(data);
         }
-        //Get: Courses/Create
+        //Get: Students/Create
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Name,Price")] Course course)
+        public async Task<IActionResult> Create([Bind("Name,Address,City,Contact,Email,Gender,DateAdded")] Student student)
         {
             if (!ModelState.IsValid)
             {
-                return View(course);
+                return View(student);
             }
-            await _service.AddAsync(course);
+            await _service.AddAsync(student);
             return RedirectToAction(nameof(Index));
         }
 
-        //Get: Courses/Edit/1
+        //Get: Students/Edit/1
         public async Task<IActionResult> Edit(int id)
         {
-            var courseDetails = await _service.GetByIdAsync(id);
-            if (courseDetails == null) return View("NotFound");
-            return View(courseDetails);
+            var studentDetails = await _service.GetByIdAsync(id);
+            if (studentDetails == null) return View("NotFound");
+            return View(studentDetails);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price")] Course course)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Address,City,Contact,Email,Gender,DateAdded")] Student student)
         {
             if (!ModelState.IsValid)
             {
-                return View(course);
+                return View(student);
             }
-            await _service.UpdateAsync(id, course);
+            await _service.UpdateAsync(id, student);
             return RedirectToAction(nameof(Index));
         }
 

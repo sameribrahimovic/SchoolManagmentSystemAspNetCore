@@ -1,0 +1,46 @@
+﻿@model NewAttendanceVM
+@using SchoolMS.Data;
+@using SchoolMS.Data.ViewModels
+ 
+@{
+    ViewData["Title"] = "Create new Attendance";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h4>Create new Attendance</h4>
+        </p>
+
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="StudentId" class="control-label">Select Student</label>
+                                <select asp-for="StudentId" class="form-control" asp-items="ViewBag.Students"></select>
+                                <span asp-validation-for="StudentId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CourseId" class="control-label"> Select Course</label>
+                                <select asp-for="CourseId" class="form-control" asp-items="ViewBag.Courses"></select>
+                                <span asp-validation-for="CourseId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Back</a>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>

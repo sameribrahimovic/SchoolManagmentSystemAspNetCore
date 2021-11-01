@@ -24,7 +24,7 @@ namespace SchoolMS.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Name,Price")] Course course)
+        public async Task<IActionResult> Create([Bind("Name, Price")] Course course)
         {
             if (!ModelState.IsValid)
             {

@@ -5,15 +5,19 @@
 @{
     ViewData["Title"] = "Create new Attendance";
 }
+   
+
+
+
 
 <div class="row">
-    <div class="col-md-8 offset-2">
+    <div class="col-md-6">
         <p>
             <h4>Create new Attendance</h4>
         </p>
-
+        <br/>
         <div class="row">
-            <div class="col-md-8 offset-2">
+            <div class="col-md-8">
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -21,20 +25,27 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label asp-for="StudentId" class="control-label">Select Student</label>
-                                <select asp-for="StudentId" class="form-control" asp-items="ViewBag.Students"></select>
+                                @*<select asp-for="StudentId" class="form-control" asp-items="ViewBag.Students">
+                                    <option>Select Student</option>
+                                </select>*@
+                                <input id="searchInput" autocomplete="off" class="form-control" placeholder="Enter Student Name"/>
                                 <span asp-validation-for="StudentId" class="text-danger"></span>
+                                @*<input type="hidden" id="hfCustomer" name="CustomerId"/>*@
                             </div>
                             <div class="form-group">
                                 <label asp-for="CourseId" class="control-label"> Select Course</label>
-                                <select asp-for="CourseId" class="form-control" asp-items="ViewBag.Courses"></select>
+                                @*<select asp-for="CourseId" class="form-control" asp-items="ViewBag.Courses">
+                                    <option>Select Course</option>
+                                </select>*@
+                                <input id="searchCourse" autocomplete="off" class="form-control" placeholder="Enter Course Name"/>
                                 <span asp-validation-for="CourseId" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
                         <a class="btn btn-outline-secondary" asp-action="Index">Back</a>
+                        <input type="submit" value="Create" class="btn btn-outline-success" />
                     </div>
 
                 </form>
@@ -44,3 +55,5 @@
 
     </div>
 </div>
+
+   
